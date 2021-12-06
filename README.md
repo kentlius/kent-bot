@@ -1,0 +1,2 @@
+# KentBot
+Personal Discord Bot
