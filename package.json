@@ -1,0 +1,28 @@
+{
+  "name": "kentbot",
+  "version": "1.0.0",
+  "description": "Kent's Personal Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kentlius/KentBot.git"
+  },
+  "author": "Kent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kentlius/KentBot/issues"
+  },
+  "homepage": "https://github.com/kentlius/KentBot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.9.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.25.2",
+    "discord.js": "^13.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.0"
+  }
+}
