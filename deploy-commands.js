@@ -1,7 +1,10 @@
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const dotenv = require('dotenv');
 // const { clientId, guildId, token } = require('./config.json');
+
+dotenv.config();
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -16,3 +19,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.token);
 rest.put(Routes.applicationGuildCommands(process.env.clientId, process.env.guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
 	.catch(console.error);
+
+// rest.put(Routes.applicationCommands(process.env.clientId), { body: commands })
+// 	.then(() => console.log('Successfully registered application commands.'))
+// 	.catch(console.error);
