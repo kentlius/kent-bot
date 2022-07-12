@@ -1,35 +1,31 @@
 {
-  "name": "kent-bot",
+  "name": "kentbot",
   "version": "1.0.0",
-  "description": "Kent's Personal Discord Bot",
+  "description": "personal discord bot",
   "main": "index.js",
-  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "start": "node .",
+    "lint": "eslint .",
+    "deploy": "node deploy-commands.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kentlius/KentBot.git"
   },
-  "author": "Kent",
+  "author": "kentlius",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kentlius/KentBot/issues"
   },
   "homepage": "https://github.com/kentlius/KentBot#readme",
-  "dependencies": {
-    "@discordjs/builders": "^0.9.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.25.2",
-    "discord-rpc": "^4.0.1",
-    "discord.js": "^13.3.1",
-    "dotenv": "^15.0.0"
-  },
   "devDependencies": {
-    "eslint": "^8.4.0"
+    "eslint": "^8.19.0"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
+    "discord-api-types": "^0.36.1",
+    "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1"
   }
 }

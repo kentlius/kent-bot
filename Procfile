@@ -1,2 +1,2 @@
-worker: node index.js
-command: node deploy-commands.js
+deploy: node deploy-commands.js
+start: node .
