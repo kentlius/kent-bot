@@ -17,6 +17,7 @@ module.exports = {
         if (gender_1 == gender_2) {
             return interaction.editReply(`${orang_1} ❤️ ${orang_2} = sus ඞ`);
         }
-		return interaction.editReply(`${orang_1} ❤️ ${orang_2} =`, Math.floor(Math.random() * 100) + 1 + '%');
+        const percentage = Math.floor(Math.random() * 100) + 1;
+		return interaction.editReply(`${orang_1} ❤️ ${orang_2} = ` + percentage + '%');
 	},
 };
