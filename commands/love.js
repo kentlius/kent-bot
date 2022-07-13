@@ -5,8 +5,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('love')
 		.setDescription('Love Calculator')
-        .addStringOption(option => option.setName('orang_1').setDescription('tumbal 1'))
-        .addStringOption(option => option.setName('orang_2').setDescription('tumbal 2')),
+        .addStringOption(option => option.setName('orang_1').setDescription('tumbal 1').setRequired(true))
+        .addStringOption(option => option.setName('orang_2').setDescription('tumbal 2').setRequired(true)),
 	async execute(interaction) {
         const orang_1 = interaction.options.getString('orang_1');
         const orang_2 = interaction.options.getString('orang_2');
@@ -15,8 +15,8 @@ module.exports = {
         const gender_2 = await response.data[1].gender;
         await interaction.deferReply();
         if (gender_1 == gender_2) {
-            return interaction.editReply('sus ඞ');
+            return interaction.editReply(`${orang_1} ❤️ ${orang_2} = sus ඞ`);
         }
-		return interaction.editReply(Math.floor(Math.random() * 100) + 1 + '%');
+		return interaction.editReply(`${orang_1} ❤️ ${orang_2} = ` + Math.floor(Math.random() * 100) + 1 + '%');
 	},
 };
