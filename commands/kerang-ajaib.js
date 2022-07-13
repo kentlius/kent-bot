@@ -7,9 +7,15 @@ module.exports = {
 		.addStringOption(option => option.setName('pertanyaan').setDescription('mau nanya apa')),
 	async execute(interaction) {
 		const pertanyaan = interaction.options.getString('pertanyaan');
-		if (pertanyaan.startsWith('apa') || pertanyaan.startsWith('Apa')) {
-			const jawaban = Math.random() > 0.5 ? interaction.reply(`${pertanyaan}\niya`) : interaction.reply(`${pertanyaan}\ntidak`);
-			return jawaban;
+		if (pertanyaan.toLowerCase.startsWith('apa')) {
+			const randomNumber = Math.random();
+			if (randomNumber < 0.45) {
+				return interaction.reply(`${pertanyaan}\niya`);
+			} else if (randomNumber < 0.9) {
+				return interaction.reply(`${pertanyaan}\ntidak`);
+			} else {
+				return interaction.reply(`${pertanyaan}\nmungkin suatu hari`);
+			}
 		}
 		return interaction.reply('nanya apa oi!');
 	},
