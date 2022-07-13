@@ -7,7 +7,7 @@ module.exports = {
 		.addStringOption(option => option.setName('pertanyaan').setDescription('mau nanya apa')),
 	async execute(interaction) {
 		const pertanyaan = interaction.options.getString('pertanyaan');
-		if (pertanyaan.toLowerCase.startsWith('apa')) {
+		if (pertanyaan.startsWith('apa') || pertanyaan.startsWith('Apa')) {
 			const randomNumber = Math.random();
 			if (randomNumber < 0.45) {
 				return interaction.reply(`${pertanyaan}\niya`);
