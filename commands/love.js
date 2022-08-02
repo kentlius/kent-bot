@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const axios = require('axios');
+const { fetch } = require('undici');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,11 +14,12 @@ module.exports = {
   async execute(interaction) {
     const orang_1 = interaction.options.getString('orang_1');
     const orang_2 = interaction.options.getString('orang_2');
-    const response = await axios.get(
+    const res = await fetch(
       `https://api.genderize.io/?name[]=${orang_1}&name[]=${orang_2}&country_id=ID`
     );
-    const gender_1 = await response.data[0].gender;
-    const gender_2 = await response.data[1].gender;
+    const data = await res.json();
+    const gender_1 = await data[0].gender;
+    const gender_2 = await data[1].gender;
     await interaction.deferReply();
     if (gender_1 == gender_2) {
       return interaction.editReply(`${orang_1} ❤️ ${orang_2} = sus ඞ`);
