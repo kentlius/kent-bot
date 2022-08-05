@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { fetch } = require('undici');
+require('dotenv').config();
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -29,7 +30,12 @@ module.exports = {
         'region'
       )}/${interaction.options.getString(
         'username'
-      )}/${interaction.options.getString('tagline')}`
+      )}/${interaction.options.getString('tagline')}`,
+      {
+        headers: {
+          Authorization: process.env.VALORANT_API_KEY,
+        },
+      }
     );
     const data = await res.json();
     await interaction.deferReply();
