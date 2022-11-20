@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { fetch } = require('undici');
 require('dotenv').config();
 
 module.exports = {
