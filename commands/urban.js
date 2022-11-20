@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { MessageEmbed } = require('discord.js');
-const getJSONResponse = require('../utils/getJSONResponse');
 
 module.exports = {
   data: new SlashCommandBuilder()
