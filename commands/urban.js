@@ -11,10 +11,10 @@ module.exports = {
     const term = interaction.options.getString('term');
     const query = new URLSearchParams({ term });
 
-    const dictResult = await request(
+    const dictResult = await fetch(
       `https://api.urbandictionary.com/v0/define?${query}`
     );
-    const { list } = await getJSONResponse(dictResult.body);
+    const { list } = await dictResult.json();
 
     await interaction.deferReply();
 
