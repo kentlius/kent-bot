@@ -1,9 +1,17 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const {
+  Client,
+  Collection,
+  GatewayIntentBits,
+  ActivityType,
+} = require('discord.js');
 require('dotenv').config();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds],
+  presence: { activities: [{ name: 'your vc', type: ActivityType.Listening }] },
+});
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
