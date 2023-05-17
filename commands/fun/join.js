@@ -16,6 +16,7 @@ module.exports = {
         if (connection) {
           setTimeout(() => connection.destroy(), 5_000);
         }
+        await interaction.reply("Joined voice channel!");
       } catch (error) {
         console.log(error);
       }

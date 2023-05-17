@@ -5,7 +5,10 @@ module.exports = {
     .setName("kerang-ajaib")
     .setDescription("Bertanya kepada kerang ajaib.")
     .addStringOption((option) =>
-      option.setName("pertanyaan").setDescription("mau nanya apa")
+      option
+        .setName("pertanyaan")
+        .setDescription("mau nanya apa")
+        .setRequired(true)
     ),
   async execute(interaction) {
     const pertanyaan = interaction.options.getString("pertanyaan");
@@ -19,6 +22,6 @@ module.exports = {
         return interaction.reply(`${pertanyaan}\nmungkin suatu hari`);
       }
     }
-    return interaction.reply("nanya apa oi!");
+    await interaction.reply({ content: "format: apakah ....?", ephemeral: true });
   },
 };
