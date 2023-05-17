@@ -1,35 +1,35 @@
-const { SlashCommandBuilder } = require('discord.js');
-require('dotenv').config();
+const { SlashCommandBuilder } = require("discord.js");
+require("dotenv").config();
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('valorank')
-    .setDescription('Displays the current Valorant Rank of the user.')
+    .setName("valorank")
+    .setDescription("Displays the current Valorant Rank of the user.")
     .addStringOption((option) =>
       option
-        .setName('region')
-        .setDescription('Region')
+        .setName("region")
+        .setDescription("Region")
         .setRequired(true)
         .addChoices(
-          { name: 'Asia Pasific', value: 'ap' },
-          { name: 'North America', value: 'na' },
-          { name: 'Europe', value: 'eu' },
-          { name: 'Korea', value: 'kr' }
+          { name: "Asia Pasific", value: "ap" },
+          { name: "North America", value: "na" },
+          { name: "Europe", value: "eu" },
+          { name: "Korea", value: "kr" }
         )
     )
     .addStringOption((option) =>
-      option.setName('username').setDescription('Username').setRequired(true)
+      option.setName("username").setDescription("Username").setRequired(true)
     )
     .addStringOption((option) =>
-      option.setName('tagline').setDescription('Tagline').setRequired(true)
+      option.setName("tagline").setDescription("Tagline").setRequired(true)
     ),
   async execute(interaction) {
     const res = await fetch(
       `https://api.henrikdev.xyz/valorant/v1/mmr/${interaction.options.getString(
-        'region'
+        "region"
       )}/${interaction.options.getString(
-        'username'
-      )}/${interaction.options.getString('tagline')}`,
+        "username"
+      )}/${interaction.options.getString("tagline")}`,
       {
         headers: {
           Authorization: process.env.VALORANT_API_KEY,
@@ -44,7 +44,7 @@ module.exports = {
     const name = data.data.name;
     const tag = data.data.tag;
     const mmr = data.data.ranking_in_tier;
-    if (rank === null) return interaction.editReply('Rank not found');
+    if (rank === null) return interaction.editReply("Rank not found");
     return interaction.editReply(`${name}#${tag} is ${rank} | ${mmr}/100`);
   },
 };

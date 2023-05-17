@@ -1,18 +1,18 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('love')
-    .setDescription('Love Calculator')
+    .setName("love")
+    .setDescription("Love Calculator")
     .addStringOption((option) =>
-      option.setName('orang_1').setDescription('tumbal 1').setRequired(true)
+      option.setName("orang_1").setDescription("tumbal 1").setRequired(true)
     )
     .addStringOption((option) =>
-      option.setName('orang_2').setDescription('tumbal 2').setRequired(true)
+      option.setName("orang_2").setDescription("tumbal 2").setRequired(true)
     ),
   async execute(interaction) {
-    const orang_1 = interaction.options.getString('orang_1');
-    const orang_2 = interaction.options.getString('orang_2');
+    const orang_1 = interaction.options.getString("orang_1");
+    const orang_2 = interaction.options.getString("orang_2");
     const res = await fetch(
       `https://api.genderize.io/?name[]=${orang_1}&name[]=${orang_2}&country_id=ID`
     );
@@ -25,7 +25,7 @@ module.exports = {
     }
     const percentage = Math.floor(Math.random() * 100) + 1;
     return interaction.editReply(
-      `${orang_1} ❤️ ${orang_2} = ` + percentage + '%'
+      `${orang_1} ❤️ ${orang_2} = ` + percentage + "%"
     );
   },
 };

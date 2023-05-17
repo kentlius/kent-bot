@@ -1,13 +1,12 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('urban')
-    .setDescription('Search for a word in urban dictionary')
-    .addStringOption((option) => option.setName('term').setDescription('null')),
+    .setName("urban")
+    .setDescription("Search for a word in urban dictionary")
+    .addStringOption((option) => option.setName("term").setDescription("null")),
   async execute(interaction) {
-    const term = interaction.options.getString('term');
+    const term = interaction.options.getString("term");
     const query = new URLSearchParams({ term });
 
     const dictResult = await fetch(
@@ -25,15 +24,15 @@ module.exports = {
       str.length > max ? `${str.slice(0, max - 3)}...` : str;
     const [answer] = list;
 
-    const embed = new MessageEmbed()
-      .setColor('#EFFF00')
+    const embed = new EmbedBuilder()
+      .setColor("#EFFF00")
       .setTitle(answer.word)
       .setURL(answer.permalink)
       .addFields(
-        { name: 'Definition', value: trim(answer.definition, 1024) },
-        { name: 'Example', value: trim(answer.example, 1024) },
+        { name: "Definition", value: trim(answer.definition, 1024) },
+        { name: "Example", value: trim(answer.example, 1024) },
         {
-          name: 'Rating',
+          name: "Rating",
           value: `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.`,
         }
       );
